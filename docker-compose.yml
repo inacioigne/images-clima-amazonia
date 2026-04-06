@@ -3,7 +3,8 @@ services:
     build: .
     container_name: image-server
     ports:
-      - "8000:8000"
+    - published: 8000
+      target: 8000
     volumes:
       - ./data:/app/data
     restart: unless-stopped
