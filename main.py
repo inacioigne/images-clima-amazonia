@@ -18,3 +18,13 @@ async def read_item(year: int, edition: str, session: str,   image_name: str):
         media_type=media_type or "application/octet-stream",
         filename=image_path.name
     )
+    
+@app.get("/{year}/{image_name}")
+async def read_cover(year: int, image_name: str):
+    image_path = Path(IMAGE_DIR, str(year), image_name)
+    # media_type, _ = guess_type(str(image_path))
+    return FileResponse(
+        path=image_path,
+        media_type='webp',
+        filename=image_path.name
+    )
