@@ -21,7 +21,7 @@ async def read_item(year: int, edition: str, session: str,   image_name: str):
     
 @app.get("/{year}/{image_name}")
 async def read_cover(year: int, image_name: str):
-    image_path = Path(IMAGE_DIR, str(year), image_name)
+    image_path = Path(IMAGE_DIR, 'cover', str(year), image_name)
     # media_type, _ = guess_type(str(image_path))
     return FileResponse(
         path=image_path,
